@@ -66,4 +66,44 @@ class Matrix(val rows: Int, val columns: Int) {
                 .map { it.map { numberFormat.format(it)}.joinToString(" ") }
                 .joinToString(System.lineSeparator())
     }
+
+    fun transponseMain(): Matrix {
+        val result = Matrix(columns, rows)
+        for (i in 0..lastRow) {
+            for (j in 0..lastColumn){
+                result.data [j][i] = data[i][j]
+            }
+        }
+        return result
+    }
+
+    fun transponseSide(): Matrix {
+        val result = Matrix(columns, rows)
+        for (i in 0..lastRow) {
+            for (j in 0..lastColumn){
+                result.data [lastColumn-j][lastRow-i] = data[i][j]
+            }
+        }
+        return result
+    }
+
+    fun transponseVertical(): Matrix {
+        val result = Matrix(columns, rows)
+        for (i in 0..lastRow) {
+            for (j in 0..lastColumn){
+                result.data [i][lastColumn-j] = data[i][j]
+            }
+        }
+        return result
+    }
+
+    fun transponseHorizontal(): Matrix {
+        val result = Matrix(columns, rows)
+        for (i in 0..lastRow) {
+            for (j in 0..lastColumn){
+                result.data [lastRow - i][j] = data[i][j]
+            }
+        }
+        return result
+    }
 }
