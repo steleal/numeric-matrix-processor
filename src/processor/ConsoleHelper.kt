@@ -16,4 +16,9 @@ class ConsoleHelper(val scanner: Scanner) {
         if (msg != "") this.print(msg)
         return scanner.nextInt()
     }
+
+    fun askDouble(msg: String = ""): Double {
+        if (msg != "") this.print(msg)
+        return scanner.nextDouble()
+    }
 }

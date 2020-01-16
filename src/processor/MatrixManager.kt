@@ -38,7 +38,7 @@ class MatrixManager(val helper: ConsoleHelper) {
 
     private fun multiplyToConstant() {
         val first = inputMatrix("first")
-        val constant = helper.askInt("Enter a constant:")
+        val constant = helper.askDouble("Enter a constant:")
         val result = first.multyTo(constant)
         helper.print("The multiplication to constant result is:")
         helper.print(result.toString())
@@ -54,17 +54,17 @@ class MatrixManager(val helper: ConsoleHelper) {
 
     private fun incorrectOption() = helper.print("Incorrect option! Try again.")
 
-    private fun inputMatrix(adjective: String = ""): IntMatrix {
+    private fun inputMatrix(adjective: String = ""): Matrix {
         helper.print("Enter size of $adjective matrix:")
         val rows = helper.askInt()
         val columns = helper.askInt()
 
         helper.print("Enter $adjective matrix:")
-        val matrix = IntMatrix(rows, columns)
+        val matrix = Matrix(rows, columns)
 
         for (i in 1..rows) {
             for (j in 1..columns) {
-                val value = helper.askInt()
+                val value = helper.askDouble()
                 matrix.set(i, j, value)
             }
         }

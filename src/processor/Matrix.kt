@@ -1,28 +1,28 @@
 package processor
 
-class IntMatrix(val rows: Int, val columns: Int) {
+class Matrix(val rows: Int, val columns: Int) {
     private val lastRow = rows - 1
     private val lastColumn = columns - 1
 
-    private val data = Array(rows) { IntArray(columns) }
+    private val data = Array(rows) { DoubleArray(columns) }
 
-    fun get(i: Int, j: Int): Int {
+    fun get(i: Int, j: Int): Double {
         return data[i - 1][j - 1]
     }
 
-    fun set(i: Int, j: Int, value: Int) {
+    fun set(i: Int, j: Int, value: Double) {
         data[i - 1][j - 1] = value
     }
 
-    fun sizesEqual(matrix: IntMatrix): Boolean {
+    fun sizesEqual(matrix: Matrix): Boolean {
         return rows == matrix.rows
                 && columns == matrix.columns
     }
 
-    fun add(matrix: IntMatrix): IntMatrix? {
+    fun add(matrix: Matrix): Matrix? {
         if (!this.sizesEqual(matrix)) return null
 
-        val result = IntMatrix(this.rows, this.columns)
+        val result = Matrix(this.rows, this.columns)
 
         for (i in 0..lastRow) {
             for (j in 0..lastColumn) {
@@ -32,8 +32,8 @@ class IntMatrix(val rows: Int, val columns: Int) {
         return result
     }
 
-    fun multyTo(constant: Int): IntMatrix {
-        val result = IntMatrix(this.rows, this.columns)
+    fun multyTo(constant: Double): Matrix {
+        val result = Matrix(this.rows, this.columns)
 
         for (i in 0..lastRow) {
             for (j in 0..lastColumn) {
@@ -43,12 +43,12 @@ class IntMatrix(val rows: Int, val columns: Int) {
         return result
     }
 
-    fun multyTo(matrix: IntMatrix): IntMatrix? {
+    fun multyTo(matrix: Matrix): Matrix? {
         if (this.columns != matrix.rows) return null
-        val result = IntMatrix(this.rows, matrix.columns)
+        val result = Matrix(this.rows, matrix.columns)
         for (i in 0..lastRow) {
             for (j in 0..matrix.lastColumn){
-                var dot = 0
+                var dot = 0.0
                 for (k in 0..lastColumn) {
                     dot += this.data[i][k] * matrix.data[k][j]
                 }
