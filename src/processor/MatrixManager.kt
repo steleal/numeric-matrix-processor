@@ -5,11 +5,13 @@ class MatrixManager(val helper: ConsoleHelper) {
         private set
 
     fun printMenu() {
-        helper.print()
-        helper.print("1. Add matrices")
-        helper.print("2. Multiply matrix to a constant")
-        helper.print("3. Multiply matrices")
-        helper.print("0. Exit")
+        helper.print("""
+        |1. Add matrices
+        |2. Multiply matrix to a constant
+        |3. Multiply matrices
+        |4. Transponse matrix"
+        |0. Exit
+        """.trimMargin())
     }
 
     fun doCmd(cmd: String) {
@@ -18,6 +20,7 @@ class MatrixManager(val helper: ConsoleHelper) {
             "1" -> addMatrices()
             "2" -> multiplyToConstant()
             "3" -> multiplyMatrices()
+            "4" -> transponseMatrix()
             else -> incorrectOption()
         }
     }
@@ -50,6 +53,28 @@ class MatrixManager(val helper: ConsoleHelper) {
         val result = first.multyTo(second)
         helper.print("The multiplication result is:")
         helper.print(result?.toString() ?: "ERROR")
+    }
+
+    private fun transponseMatrix() {
+        helper.print("""
+        |1. Main diagonal
+        |2. Side diagonal
+        |3. Vertical line
+        |4. Horizontal line          
+        """.trimMargin())
+        val kindOfTransponse = askCmd()
+        val first = inputMatrix("first")
+
+        val result = when (kindOfTransponse) {
+            "1" -> first.transponseMain()
+            "2" -> first.transponseSide()
+            "3" -> first.transponseVertical()
+            "4" -> first.transponseHorizontal()
+            else -> return
+        }
+
+        helper.print("The result is:")
+        helper.print(result.toString())
     }
 
     private fun incorrectOption() = helper.print("Incorrect option! Try again.")
