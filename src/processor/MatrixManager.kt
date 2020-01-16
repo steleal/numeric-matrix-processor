@@ -32,14 +32,22 @@ class MatrixManager(val helper: ConsoleHelper) {
     private fun addMatrices() {
         val first = inputMatrix("first")
         val second = inputMatrix("second")
+        val result = first.add(second)
+        helper.print(result.toString())
     }
 
     private fun multiplyToConstant() {
-
+        val first = inputMatrix("first")
+        val constant = helper.askInt("Enter a constant:")
+        val result = first.multyTo(constant)
+        helper.print(result.toString())
     }
 
     private fun multiplyMatrices() {
-
+        val first = inputMatrix("first")
+        val second = inputMatrix("second")
+        val result = first.multyTo(second)
+        helper.print(result?.toString() ?: "ERROR")
     }
 
     private fun incorrectOption() = helper.print("Incorrect option! Try again.")
