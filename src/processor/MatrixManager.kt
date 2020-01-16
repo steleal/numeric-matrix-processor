@@ -13,7 +13,6 @@ class MatrixManager(val helper: ConsoleHelper) {
     }
 
     fun doCmd(cmd: String) {
-        helper.print()
         when (cmd) {
             "0" -> exit()
             "1" -> addMatrices()
@@ -33,6 +32,7 @@ class MatrixManager(val helper: ConsoleHelper) {
         val first = inputMatrix("first")
         val second = inputMatrix("second")
         val result = first.add(second)
+        helper.print("The addition result is:")
         helper.print(result.toString())
     }
 
@@ -40,6 +40,7 @@ class MatrixManager(val helper: ConsoleHelper) {
         val first = inputMatrix("first")
         val constant = helper.askInt("Enter a constant:")
         val result = first.multyTo(constant)
+        helper.print("The multiplication to constant result is:")
         helper.print(result.toString())
     }
 
@@ -47,6 +48,7 @@ class MatrixManager(val helper: ConsoleHelper) {
         val first = inputMatrix("first")
         val second = inputMatrix("second")
         val result = first.multyTo(second)
+        helper.print("The multiplication result is:")
         helper.print(result?.toString() ?: "ERROR")
     }
 
@@ -66,6 +68,7 @@ class MatrixManager(val helper: ConsoleHelper) {
                 matrix.set(i, j, value)
             }
         }
+        helper.askLine() //input hack after scanner.nextInt()
         return matrix
     }
 }
