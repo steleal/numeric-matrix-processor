@@ -6,9 +6,14 @@ class ConsoleHelper(val scanner: Scanner) {
 
     fun print(msg: String = "") = println(msg)
 
-    fun askInput(msg: String = ""): String {
+    fun askLine(msg: String = ""): String {
         if (msg != "") this.print(msg)
-        val answer = scanner.nextLine()
-        return answer
+        return scanner.nextLine()
+
+    }
+
+    fun askInt(msg: String = ""): Int {
+        if (msg != "") this.print(msg)
+        return scanner.nextInt()
     }
 }
