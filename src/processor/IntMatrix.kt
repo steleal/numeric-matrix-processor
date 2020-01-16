@@ -20,7 +20,7 @@ class IntMatrix(val rows: Int, val columns: Int) {
     }
 
     fun add(matrix: IntMatrix): IntMatrix? {
-        if (! this.sizesEqual(matrix)) return null
+        if (!this.sizesEqual(matrix)) return null
 
         val result = IntMatrix(this.rows, this.columns)
 
@@ -32,5 +32,9 @@ class IntMatrix(val rows: Int, val columns: Int) {
         return result
     }
 
+    override fun toString(): String {
+        return data
+                .map { it.joinToString(" ") }
+                .joinToString(System.lineSeparator())
+    }
 }
-
