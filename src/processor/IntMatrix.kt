@@ -32,6 +32,17 @@ class IntMatrix(val rows: Int, val columns: Int) {
         return result
     }
 
+    fun multyTo(constant: Int): IntMatrix {
+        val result = IntMatrix(this.rows, this.columns)
+
+        for (i in 0..lastRow) {
+            for (j in 0..lastColumn) {
+                result.data[i][j] = this.data[i][j] * constant
+            }
+        }
+        return result
+    }
+
     override fun toString(): String {
         return data
                 .map { it.joinToString(" ") }
