@@ -43,6 +43,21 @@ class IntMatrix(val rows: Int, val columns: Int) {
         return result
     }
 
+    fun multyTo(matrix: IntMatrix): IntMatrix? {
+        if (this.columns != matrix.rows) return null
+        val result = IntMatrix(this.rows, matrix.columns)
+        for (i in 0..lastRow) {
+            for (j in 0..matrix.lastColumn){
+                var dot = 0
+                for (k in 0..lastColumn) {
+                    dot += this.data[i][k] * matrix.data[k][j]
+                }
+                result.data[i][j] = dot
+            }
+        }
+        return result
+    }
+
     override fun toString(): String {
         return data
                 .map { it.joinToString(" ") }
