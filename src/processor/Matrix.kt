@@ -1,8 +1,11 @@
 package processor
 
+import java.text.DecimalFormat
+
 class Matrix(val rows: Int, val columns: Int) {
     private val lastRow = rows - 1
     private val lastColumn = columns - 1
+    private val numberFormat = DecimalFormat("#.##")
 
     private val data = Array(rows) { DoubleArray(columns) }
 
@@ -60,7 +63,7 @@ class Matrix(val rows: Int, val columns: Int) {
 
     override fun toString(): String {
         return data
-                .map { it.joinToString(" ") }
+                .map { it.map { numberFormat.format(it)}.joinToString(" ") }
                 .joinToString(System.lineSeparator())
     }
 }
