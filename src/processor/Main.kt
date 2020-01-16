@@ -5,10 +5,10 @@ import java.util.Scanner
 fun main() {
     val scanner= Scanner(System.`in`)
     val matrixA = inputMatrix(scanner)
-    val matrixB = inputMatrix(scanner)
+    val constant = scanner.nextInt()
 
-    val result = matrixA.add(matrixB)
-    println (result ?: "ERROR")
+    val result = matrixA.multyTo(constant)
+    println (result)
 }
 
 fun inputMatrix(scanner: Scanner): IntMatrix {
