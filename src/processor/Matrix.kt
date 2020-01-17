@@ -122,16 +122,28 @@ class Matrix(val rows: Int, val columns: Int) {
 
     private fun minor(ii: Int, jj: Int): Double {
         val size = rows - 1
-        val matrix = Matrix(size,size)
+        val matrix = Matrix(size, size)
         for (i in 0..lastRow) {
-            if (i==ii) continue
-            val ni = if (i > ii) i-1 else i
+            if (i == ii) continue
+            val ni = if (i > ii) i - 1 else i
             for (j in 0..lastColumn) {
-                if ( j == jj) continue
-                val nj = if (j > jj) j-1 else j
+                if (j == jj) continue
+                val nj = if (j > jj) j - 1 else j
                 matrix.data[ni][nj] = data[i][j]
             }
         }
         return matrix.determinant()
+    }
+
+    fun inverseMatrix(): Matrix {
+        val oneToDetA = 1.0 / this.determinant()
+        val transpCofactorMatrix = Matrix(columns, rows)
+        for (i in 0..lastRow) {
+            for (j in 0..lastColumn) {
+                val k = if ((i + j) % 2 == 1) -1 else 1
+                transpCofactorMatrix.data[j][i] = k * this.minor(i,j)
+            }
+        }
+        return transpCofactorMatrix.multyTo(oneToDetA)
     }
 }

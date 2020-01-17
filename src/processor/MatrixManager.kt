@@ -11,8 +11,9 @@ class MatrixManager(val helper: ConsoleHelper) {
         |1. Add matrices
         |2. Multiply matrix to a constant
         |3. Multiply matrices
-        |4. Transponse matrix"
-        |5. Calculate a determinant"
+        |4. Transponse matrix
+        |5. Calculate a determinant
+        |6. Inverse matrix
         |0. Exit
         """.trimMargin())
     }
@@ -25,6 +26,7 @@ class MatrixManager(val helper: ConsoleHelper) {
             "3" -> multiplyMatrices()
             "4" -> transponseMatrix()
             "5" -> calculateDeterminant()
+            "6" -> inverseMatrix()
             else -> incorrectOption()
         }
     }
@@ -87,6 +89,13 @@ class MatrixManager(val helper: ConsoleHelper) {
         helper.print("The determinant is:")
         val numberFormat = DecimalFormat("#.##")
         helper.print(numberFormat.format(determinant))
+    }
+
+    private fun inverseMatrix() {
+        val first = inputMatrix("first")
+        val invMatrix = first.inverseMatrix()
+        helper.print("The result is:")
+        helper.print(invMatrix.toString())
     }
 
     private fun incorrectOption() = helper.print("Incorrect option! Try again.")
