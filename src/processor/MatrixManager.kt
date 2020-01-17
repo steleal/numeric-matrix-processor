@@ -84,7 +84,7 @@ class MatrixManager(val helper: ConsoleHelper) {
     private fun calculateDeterminant() {
         val first = inputMatrix("first")
         val determinant = first.determinant()
-        helper.print("The result is:")
+        helper.print("The determinant is:")
         val numberFormat = DecimalFormat("#.##")
         helper.print(numberFormat.format(determinant))
     }
