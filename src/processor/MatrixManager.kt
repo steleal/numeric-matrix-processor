@@ -1,5 +1,7 @@
 package processor
 
+import java.text.DecimalFormat
+
 class MatrixManager(val helper: ConsoleHelper) {
     var needExit: Boolean = false
         private set
@@ -54,7 +56,7 @@ class MatrixManager(val helper: ConsoleHelper) {
         val second = inputMatrix("second")
         val result = first.multyTo(second)
         helper.print("The multiplication result is:")
-        helper.print(result?.toString() ?: "ERROR")
+        helper.print(result.toString())
     }
 
     private fun transponseMatrix() {
@@ -83,7 +85,8 @@ class MatrixManager(val helper: ConsoleHelper) {
         val first = inputMatrix("first")
         val determinant = first.determinant()
         helper.print("The result is:")
-        helper.print(determinant.toString())
+        val numberFormat = DecimalFormat("#.##")
+        helper.print(numberFormat.format(determinant))
     }
 
     private fun incorrectOption() = helper.print("Incorrect option! Try again.")
