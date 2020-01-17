@@ -69,7 +69,7 @@ class MatrixManager(val helper: ConsoleHelper) {
         |4. Horizontal line          
         """.trimMargin())
         val kindOfTransponse = askCmd()
-        val first = inputMatrix("first")
+        val first = inputMatrix()
 
         val result = when (kindOfTransponse) {
             "1" -> first.transponseMain()
@@ -84,7 +84,7 @@ class MatrixManager(val helper: ConsoleHelper) {
     }
 
     private fun calculateDeterminant() {
-        val first = inputMatrix("first")
+        val first = inputMatrix()
         val determinant = first.determinant()
         helper.print("The determinant is:")
         val numberFormat = DecimalFormat("#.##")
@@ -92,7 +92,7 @@ class MatrixManager(val helper: ConsoleHelper) {
     }
 
     private fun inverseMatrix() {
-        val first = inputMatrix("first")
+        val first = inputMatrix()
         val invMatrix = first.inverseMatrix()
         helper.print("The result is:")
         helper.print(invMatrix.toString())

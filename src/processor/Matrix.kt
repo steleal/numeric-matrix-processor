@@ -141,7 +141,7 @@ class Matrix(val rows: Int, val columns: Int) {
         for (i in 0..lastRow) {
             for (j in 0..lastColumn) {
                 val k = if ((i + j) % 2 == 1) -1 else 1
-                transpCofactorMatrix.data[j][i] = k * this.minor(i,j)
+                transpCofactorMatrix.data[j][i] = k * this.minor(i, j)
             }
         }
         return transpCofactorMatrix.multyTo(oneToDetA)
