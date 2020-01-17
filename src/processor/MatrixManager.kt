@@ -10,6 +10,7 @@ class MatrixManager(val helper: ConsoleHelper) {
         |2. Multiply matrix to a constant
         |3. Multiply matrices
         |4. Transponse matrix"
+        |5. Calculate a determinant"
         |0. Exit
         """.trimMargin())
     }
@@ -21,6 +22,7 @@ class MatrixManager(val helper: ConsoleHelper) {
             "2" -> multiplyToConstant()
             "3" -> multiplyMatrices()
             "4" -> transponseMatrix()
+            "5" -> calculateDeterminant()
             else -> incorrectOption()
         }
     }
@@ -75,6 +77,13 @@ class MatrixManager(val helper: ConsoleHelper) {
 
         helper.print("The result is:")
         helper.print(result.toString())
+    }
+
+    private fun calculateDeterminant() {
+        val first = inputMatrix("first")
+        val determinant = first.determinant()
+        helper.print("The result is:")
+        helper.print(determinant.toString())
     }
 
     private fun incorrectOption() = helper.print("Incorrect option! Try again.")
