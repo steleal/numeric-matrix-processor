@@ -1,5 +1,6 @@
 package processor
 
+import java.lang.Exception
 import java.text.DecimalFormat
 
 class Matrix(
@@ -25,8 +26,8 @@ class Matrix(
                 columns == matrix.columns
     }
 
-    fun add(matrix: Matrix): Matrix? {
-        if (!this.sizesEqual(matrix)) return null
+    fun add(matrix: Matrix): Matrix {
+        if (!this.sizesEqual(matrix)) throw Exception("Matrices' sizes are not equal!")
 
         val result = Matrix(this.rows, this.columns)
 
