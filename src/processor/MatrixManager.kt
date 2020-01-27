@@ -2,7 +2,7 @@ package processor
 
 import java.text.DecimalFormat
 
-class MatrixManager(val helper: ConsoleHelper) {
+class MatrixManager(private val helper: ConsoleHelper) {
     var needExit: Boolean = false
         private set
 
@@ -114,7 +114,7 @@ class MatrixManager(val helper: ConsoleHelper) {
                 matrix.set(i, j, value)
             }
         }
-        helper.askLine() //input hack after scanner.nextInt()
+        helper.askLine() // input hack after scanner.nextInt()
         return matrix
     }
 }

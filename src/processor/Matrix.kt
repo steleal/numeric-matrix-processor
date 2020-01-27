@@ -2,7 +2,10 @@ package processor
 
 import java.text.DecimalFormat
 
-class Matrix(val rows: Int, val columns: Int) {
+class Matrix(
+        private val rows: Int,
+        private val columns: Int
+) {
     private val lastRow = rows - 1
     private val lastColumn = columns - 1
     private val numberFormat = DecimalFormat("#.##")
@@ -17,9 +20,9 @@ class Matrix(val rows: Int, val columns: Int) {
         data[i - 1][j - 1] = value
     }
 
-    fun sizesEqual(matrix: Matrix): Boolean {
-        return rows == matrix.rows
-                && columns == matrix.columns
+    private fun sizesEqual(matrix: Matrix): Boolean {
+        return rows == matrix.rows &&
+                columns == matrix.columns
     }
 
     fun add(matrix: Matrix): Matrix? {

@@ -1,8 +1,8 @@
 package processor
 
-import java.util.*
+import java.util.Scanner
 
-class ConsoleHelper(val scanner: Scanner) {
+class ConsoleHelper(private val scanner: Scanner) {
 
     fun print(msg: String = "") = println(msg)
 
