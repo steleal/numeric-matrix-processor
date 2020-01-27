@@ -2,7 +2,7 @@ package processor
 
 import java.text.DecimalFormat
 
-class MatrixManager(private val helper: ConsoleHelper) {
+class MatrixManager(private val helper: IOHelper) {
     var needExit: Boolean = false
         private set
 
